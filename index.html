@@ -9,33 +9,47 @@
         :root {
             --primary-red: #ff1a1a;
             --dark-bg: #050505;
-            --card-bg: #121212;
+            --card-bg: #0d0d0d;
             --text-light: #f5f5f5;
-            --accent-gray: #333;
+            --accent-gray: #1a1a1a;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: var(--dark-bg); color: var(--text-light); scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body { 
+            background-color: var(--dark-bg); 
+            color: var(--text-light); 
+            scroll-behavior: smooth; 
+            overflow-x: hidden;
+        }
 
-        /* Estilo Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #111; }
-        ::-webkit-scrollbar-thumb { background: var(--primary-red); border-radius: 10px; }
+        /* Scrollbar Personalizada */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--primary-red); }
 
         header {
-            padding: 15px 5%;
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0,0,0,0.95);
-            border-bottom: 2px solid var(--primary-red);
-            position: sticky;
+            background: rgba(0,0,0,0.9);
+            border-bottom: 1px solid var(--primary-red);
+            position: fixed;
+            width: 100%;
             top: 0; z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
-        .logo-text { font-weight: 900; color: var(--primary-red); text-transform: uppercase; letter-spacing: 3px; }
+        .logo-text { 
+            font-weight: 900; 
+            color: var(--primary-red); 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-style: italic;
+        }
 
-        /* Hero */
+        /* Hero Section com Novo Fundo */
         .hero {
             height: 100vh;
             display: flex;
@@ -43,151 +57,218 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(0deg, var(--dark-bg) 10%, transparent 100%), 
-                        url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80') center/cover;
+            /* Fundo Urbano Noturno Profissional */
+            background: linear-gradient(0deg, var(--dark-bg) 5%, rgba(0,0,0,0.6) 100%), 
+                        url('https://images.unsplash.com/photo-1514473776127-61e2dc1dded3?q=80&w=2071') center/cover;
             padding: 20px;
+            border-bottom: 3px solid var(--primary-red);
         }
 
         .hero img {
-            width: 220px; height: 220px;
+            width: 240px; 
+            height: 240px;
             border-radius: 50%;
-            border: 5px solid var(--primary-red);
-            box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+            border: 4px solid var(--primary-red);
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.4);
             margin-bottom: 25px;
-            animation: pulse 2s infinite;
+            object-fit: cover;
+            animation: float 3s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); }
-            50% { transform: scale(1.03); box-shadow: 0 0 50px rgba(255, 0, 0, 0.7); }
-            100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
-        .hero h1 { font-size: 4rem; text-transform: uppercase; margin-bottom: 10px; font-style: italic; }
+        .hero h1 { 
+            font-size: clamp(2.5rem, 8vw, 5rem); 
+            text-transform: uppercase; 
+            font-weight: 900;
+            line-height: 1;
+            text-shadow: 4px 4px 0px #000;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
 
         .btn-join {
-            background: var(--primary-red); color: white; padding: 18px 45px;
-            border-radius: 50px; text-decoration: none; font-weight: 900;
-            font-size: 1.3rem; transition: 0.4s; margin-top: 30px;
-            display: inline-block; border: 2px solid transparent;
+            background: var(--primary-red); 
+            color: white; 
+            padding: 20px 50px;
+            border-radius: 5px; 
+            text-decoration: none; 
+            font-weight: 900;
+            font-size: 1.2rem; 
+            transition: 0.3s; 
+            margin-top: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); /* Estilo agressivo */
         }
 
         .btn-join:hover {
-            background: transparent; border-color: var(--primary-red);
-            color: var(--primary-red); transform: translateY(-5px);
+            background: white;
+            color: var(--primary-red);
+            transform: scale(1.05);
         }
 
-        /* Seções Generais */
+        /* Seções */
         section { padding: 100px 10%; }
-        h2 { text-align: center; font-size: 3rem; margin-bottom: 60px; text-transform: uppercase; color: var(--primary-red); }
+        h2 { text-align: center; font-size: 2.5rem; margin-bottom: 60px; text-transform: uppercase; border-left: 10px solid var(--primary-red); display: inline-block; padding-left: 15px; }
 
-        /* Membros Grid */
+        .section-title-container { text-align: center; width: 100%; }
+
+        /* Membros */
         .members-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
         }
 
         .member-card {
             background: var(--card-bg);
-            padding: 30px;
+            padding: 40px 20px;
             text-align: center;
-            border-radius: 15px;
+            border: 1px solid var(--accent-gray);
+            position: relative;
+            overflow: hidden;
             transition: 0.3s;
-            border: 1px solid #222;
         }
 
-        .member-card:hover { border-color: var(--primary-red); transform: scale(1.05); }
-        .member-card i { font-size: 3rem; color: var(--primary-red); margin-bottom: 15px; }
-        .rank { font-size: 0.8rem; text-transform: uppercase; color: #888; letter-spacing: 2px; }
+        .member-card:hover {
+            border-color: var(--primary-red);
+            background: #150000;
+        }
 
-        /* Galeria */
+        .member-card i { font-size: 2.5rem; color: var(--primary-red); margin-bottom: 15px; }
+        .rank { font-size: 0.75rem; color: var(--primary-red); font-weight: bold; text-transform: uppercase; margin-bottom: 5px; }
+        .member-card h3 { font-size: 1.4rem; letter-spacing: 1px; }
+
+        /* Galeria Melhorada */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
         }
 
         .gallery-item {
-            height: 200px;
-            background: #222;
-            border-radius: 10px;
+            height: 250px;
+            background: #000;
             overflow: hidden;
-            border: 2px solid transparent;
-            transition: 0.3s;
+            border: 1px solid #222;
         }
 
-        .gallery-item:hover { border-color: var(--primary-red); cursor: pointer; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
-        .gallery-item:hover img { opacity: 1; transform: scale(1.1); }
+        .gallery-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            opacity: 0.6; 
+            transition: 0.5s; 
+            filter: grayscale(100%);
+        }
 
-        footer { padding: 50px; text-align: center; background: #000; border-top: 2px solid var(--primary-red); }
+        .gallery-item:hover img { 
+            opacity: 1; 
+            transform: scale(1.1); 
+            filter: grayscale(0%);
+        }
+
+        footer { 
+            padding: 60px 20px; 
+            text-align: center; 
+            background: #000; 
+            border-top: 1px solid var(--accent-gray);
+        }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            section { padding: 60px 5%; }
+            section { padding: 80px 5%; }
+            .hero h1 { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-text">Legião do Caos RP</div>
+        <div class="logo-text">Legião do Caos</div>
         <nav>
-            <a href="#membros" style="color: white; text-decoration: none; margin-left: 15px;">Elite</a>
-            <a href="#galeria" style="color: white; text-decoration: none; margin-left: 15px;">Galeria</a>
+            <a href="#membros" style="color: white; text-decoration: none; font-weight: bold; font-size: 0.9rem;">ELITE</a>
+            <a href="#galeria" style="color: white; text-decoration: none; font-weight: bold; font-size: 0.9rem; margin-left: 20px;">FROTA</a>
         </nav>
     </header>
 
-    <section class="hero">
-        <img src="logo.jpg" onerror="this.src='https://i.postimg.cc/1zp7Xg5W/logo.jpg'" alt="Logo Legião">
-        <h1>CAOS E ORDEM</h1>
-        <p>A força bruta que comanda o MadOut2.</p>
-        <a href="https://chat.whatsapp.com/HTb44FoVyyHK9xNKUTb3w1" target="_blank" class="btn-join">
-            <i class="fab fa-whatsapp"></i> FECHAR COM A GANGUE
-        </a>
-    </section>
+    <main>
+        <section class="hero">
+            <img src="logo.png" alt="Legião do Caos Logo">
+            <h1>CAOS E ORDEM</h1>
+            <p>RESPEITO É CONQUISTADO. LEALDADE É TUDO.</p>
+            <a href="https://chat.whatsapp.com/HTb44FoVyyHK9xNKUTb3w1" target="_blank" class="btn-join">
+                <i class="fab fa-whatsapp"></i> FECHAR COM A GANGUE
+            </a>
+        </section>
 
-    <section id="membros">
-        <h2>Membros de Elite</h2>
-        <div class="members-grid">
-            <div class="member-card">
-                <i class="fas fa-crown"></i>
-                <div class="rank">Fundador / Admin</div>
-                <h3>Caua Madout2</h3>
+        <section id="membros">
+            <div class="section-title-container">
+                <h2>Hierarquia de Elite</h2>
             </div>
-            <div class="member-card">
-                <i class="fas fa-skull"></i>
-                <div class="rank">Capitão</div>
-                <h3>Reginaldo Brandão</h3>
+            <div class="members-grid">
+                <div class="member-card">
+                    <i class="fas fa-crown"></i>
+                    <div class="rank">Fundador / Admin</div>
+                    <h3>Caua Madout2</h3>
+                </div>
+                <div class="member-card">
+                    <i class="fas fa-skull"></i>
+                    <div class="rank">Capitão de Guerra</div>
+                    <h3>Reginaldo Brandão</h3>
+                </div>
+                <div class="member-card">
+                    <i class="fas fa-user-shield"></i>
+                    <div class="rank">Conselheiro</div>
+                    <h3>Daniel Araujox</h3>
+                </div>
+                <div class="member-card">
+                    <i class="fas fa-crosshairs"></i>
+                    <div class="rank">Operacional</div>
+                    <h3>[ 01 ]</h3>
+                </div>
             </div>
-            <div class="member-card">
-                <i class="fas fa-shield-alt"></i>
-                <div class="rank">Braço Direito</div>
-                <h3>Daniel Araujox</h3>
-            </div>
-            <div class="member-card">
-                <i class="fas fa-crosshairs"></i>
-                <div class="rank">Elite</div>
-                <h3>[ 01 ]</h3>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="galeria" style="background: #080808;">
-        <h2>Nossa Frota & Missões</h2>
-        <div class="gallery">
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1614200187524-dc5b8ec221dc?q=80" alt="Carro"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1544654803-b69140b285a1?q=80" alt="Gangue"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519669011783-4eaa95fa1b7d?q=80" alt="Cidade"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80" alt="Missão"></div>
-        </div>
-    </section>
+        <section id="galeria" style="background: #030303;">
+            <div class="section-title-container">
+                <h2>Nossa Frota</h2>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070" alt="Carro 1"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1964" alt="Carro 2"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=2070" alt="Carro 3"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?q=80&w=2069" alt="Carro 4"></div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2026 LEGIÃO DO CAOS RP - MADOUT2</p>
-        <p style="font-size: 0.7rem; color: #555; margin-top: 10px;">Desenvolvido para máxima performance via Cloudflare Pages</p>
+        <p style="font-weight: bold; letter-spacing: 2px;">LEGIÃO DO CAOS RP</p>
+        <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">MadOut2 Organização © 2026</p>
     </footer>
 
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
