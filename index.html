@@ -14,73 +14,56 @@
             --text-light: #f0f0f0;
             --accent-gray: #151515;
             --transition-fast: 0.3s ease;
-            --transition-slow: 0.6s ease-out;
         }
 
-        /* Reset e Base */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         
         body { 
             background-color: var(--dark-bg); 
             color: var(--text-light); 
             overflow-x: hidden;
-            font-size: 16px;
+            line-height: 1.6;
         }
 
-        /* Scrollbar Profissional */
+        /* Scrollbar */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: var(--primary-red); border-radius: 10px; }
 
-        /* Header Animado */
+        /* Header Responsivo */
         header {
             padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             border-bottom: 2px solid var(--primary-red);
             position: fixed;
             width: 100%;
             top: 0; z-index: 1000;
             backdrop-filter: blur(10px);
-            transition: background var(--transition-fast);
         }
 
         .logo-text { 
             font-weight: 900; 
             color: var(--primary-red); 
             text-transform: uppercase; 
-            letter-spacing: 3px; 
+            letter-spacing: 2px; 
             font-style: italic;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+            font-size: 1.2rem;
         }
 
-        header nav a {
-            color: white; 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 0.8rem;
-            margin-left: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            transition: var(--transition-fast);
+        /* Menu Desktop e Mobile */
+        nav ul { display: flex; list-style: none; gap: 25px; }
+        nav a {
+            color: white; text-decoration: none; font-weight: 700; font-size: 0.85rem;
+            text-transform: uppercase; transition: var(--transition-fast);
         }
+        nav a:hover { color: var(--primary-red); }
 
-        header nav a::after {
-            content: '';
-            position: absolute;
-            width: 0; height: 2px;
-            bottom: -5px; left: 0;
-            background-color: var(--primary-red);
-            transition: var(--transition-fast);
-        }
+        .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
-        header nav a:hover::after { width: 100%; }
-        header nav a:hover { color: var(--primary-red); }
-
-        /* Hero Section com Paralaxe e Animação de Brilho */
+        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -88,201 +71,96 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            /* Novo Fundo Urbano e Escuro */
             background: linear-gradient(0deg, var(--dark-bg) 5%, rgba(0,0,0,0.5) 100%), 
-                        url('https://images.unsplash.com/photo-1514473776127-61e2dc1dded3?q=80') center/cover;
-            background-attachment: fixed; /* Efeito Paralaxe */
+                        url('https://images.unsplash.com/photo-1514473776127-61e2dc1dded3?q=80') center/cover no-repeat;
+            background-attachment: fixed;
             padding: 20px;
-            position: relative;
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(255,0,0,0.05) 0%, transparent 80%);
-            z-index: 1;
-        }
-
-        .hero * { z-index: 2; position: relative; }
 
         .hero img {
-            width: 250px; 
-            height: 250px;
+            width: 200px; height: 200px;
             border-radius: 50%;
-            border: 5px solid var(--primary-red);
-            box-shadow: 0 0 50px rgba(255, 0, 0, 0.4);
-            margin-bottom: 30px;
+            border: 4px solid var(--primary-red);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+            margin-bottom: 20px;
             object-fit: cover;
             animation: pulse 2s infinite, float 3s infinite ease-in-out;
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 0, 0, 0.3); }
-            50% { transform: scale(1.03); box-shadow: 0 0 70px rgba(255, 0, 0, 0.7); }
-            100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 0, 0, 0.3); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(255, 0, 0, 0.6); }
         }
-
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
 
         .hero h1 { 
-            font-size: clamp(2.5rem, 8vw, 5rem); 
-            text-transform: uppercase; 
-            font-weight: 900;
-            line-height: 1;
-            text-shadow: 0 0 10px rgba(0,0,0,0.8);
-            letter-spacing: -2px;
-            margin-bottom: 10px;
-            color: white;
+            font-size: clamp(2rem, 10vw, 4.5rem); 
+            text-transform: uppercase; font-weight: 900;
+            color: white; line-height: 1; margin-bottom: 10px;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: #ccc;
-            margin-top: 10px;
-            letter-spacing: 1px;
-            font-weight: 700;
-        }
+        .hero p { font-size: clamp(0.9rem, 4vw, 1.2rem); color: #ccc; font-weight: 600; }
 
         .btn-join {
-            background: var(--primary-red); 
-            color: white; 
-            padding: 20px 50px;
-            border-radius: 5px; 
-            text-decoration: none; 
-            font-weight: 900;
-            font-size: 1.3rem; 
-            transition: var(--transition-fast); 
-            margin-top: 40px;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
-            cursor: pointer;
-            border: 2px solid transparent;
+            background: var(--primary-red); color: white; padding: 15px 35px;
+            border-radius: 4px; text-decoration: none; font-weight: 900;
+            font-size: 1.1rem; transition: 0.3s; margin-top: 30px;
+            display: inline-flex; align-items: center; gap: 10px;
+            text-transform: uppercase; border: 2px solid transparent;
         }
+        .btn-join:hover { background: transparent; border-color: var(--primary-red); color: var(--primary-red); transform: scale(1.05); }
 
-        .btn-join:hover {
-            background: transparent;
-            color: var(--primary-red);
-            transform: scale(1.05);
-            border: 2px solid var(--primary-red);
-            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.7);
-        }
+        /* Seções */
+        section { padding: 80px 8%; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); text-transform: uppercase; color: var(--primary-red); font-weight: 900; }
+        .underline { width: 50px; height: 4px; background: var(--primary-red); margin: 10px auto; }
 
-        /* Seções e Animações no Scroll */
-        section { padding: 120px 10%; position: relative; }
-
-        .section-title-container { 
-            text-align: center; 
-            width: 100%; 
-            margin-bottom: 70px;
-            overflow: hidden;
-        }
-
-        h2 { 
-            text-align: center; 
-            font-size: clamp(2rem, 5vw, 3rem); 
-            margin-bottom: 15px; 
-            text-transform: uppercase; 
-            color: var(--primary-red); 
-            font-weight: 900;
-            letter-spacing: -1px;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
-            display: inline-block;
-            transition: var(--transition-slow);
-        }
-
-        .underline {
-            width: 60px;
-            height: 4px;
-            background-color: var(--primary-red);
-            margin: 0 auto;
-        }
-
-        /* Membros */
+        /* Membros Grid */
         .members-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
-
         .member-card {
-            background: var(--card-bg);
-            padding: 40px 20px;
-            text-align: center;
-            border: 1px solid var(--accent-gray);
-            transition: var(--transition-fast);
-            position: relative;
-            overflow: hidden;
+            background: var(--card-bg); padding: 30px 15px; text-align: center;
+            border: 1px solid var(--accent-gray); transition: 0.3s;
         }
+        .member-card:hover { border-color: var(--primary-red); transform: translateY(-5px); }
+        .member-card i { font-size: 2rem; color: var(--primary-red); margin-bottom: 15px; }
+        .rank { font-size: 0.7rem; color: var(--primary-red); font-weight: 700; text-transform: uppercase; }
 
-        .member-card:hover {
-            border-color: var(--primary-red);
-            transform: translateY(-5px) scale(1.02);
-            background: #110000;
-        }
-
-        .member-card i { font-size: 2.5rem; color: var(--primary-red); margin-bottom: 15px; }
-        .rank { font-size: 0.75rem; color: var(--primary-red); font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
-        .member-card h3 { font-size: 1.4rem; letter-spacing: 1px; color: white; }
-
-        /* Galeria Frota */
+        /* Galeria */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
         }
-
-        .gallery-item {
-            height: 250px;
-            background: #000;
-            overflow: hidden;
-            border: 1px solid #1a1a1a;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-
-        .gallery-item img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            opacity: 0.6; 
-            transition: 0.5s ease; 
-            filter: grayscale(100%);
-        }
-
-        .gallery-item:hover img { 
-            opacity: 1; 
-            transform: scale(1.1); 
-            filter: grayscale(0%);
-        }
-
-        .gallery-item:hover { border-color: var(--primary-red); box-shadow: 0 0 20px rgba(255, 0, 0, 0.4); }
+        .gallery-item { height: 200px; overflow: hidden; border: 1px solid #1a1a1a; cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s; filter: grayscale(100%); }
+        .gallery-item:hover img { opacity: 1; transform: scale(1.1); filter: grayscale(0%); }
 
         /* Footer */
-        footer { 
-            padding: 80px 20px; 
-            text-align: center; 
-            background: #000; 
-            border-top: 1px solid var(--accent-gray);
-        }
+        footer { padding: 60px 20px; text-align: center; background: #000; border-top: 1px solid var(--accent-gray); }
+        .social-icons { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+        .social-icons a { color: #666; font-size: 1.3rem; transition: 0.3s; }
+        .social-icons a:hover { color: var(--primary-red); }
 
-        .social-icons { margin-top: 25px; display: flex; justify-content: center; gap: 20px; }
-        .social-icons a { color: #888; font-size: 1.5rem; transition: var(--transition-fast); }
-        .social-icons a:hover { color: var(--primary-red); transform: scale(1.1); }
-
-        /* Media Queries */
+        /* Responsividade Mobile */
         @media (max-width: 768px) {
-            section { padding: 80px 5%; }
-            .hero h1 { font-size: 3rem; }
-            header { padding: 15px 5%; }
-            header nav a { font-size: 0.7rem; margin-left: 15px; }
-            .hero img { width: 200px; height: 200px; }
+            .menu-toggle { display: block; }
+            nav ul {
+                display: none; flex-direction: column; position: absolute;
+                top: 60px; left: 0; width: 100%; background: rgba(0,0,0,0.95);
+                padding: 20px; text-align: center; border-bottom: 2px solid var(--primary-red);
+            }
+            nav ul.active { display: flex; }
+            nav a { font-size: 1.1rem; display: block; padding: 10px 0; }
+            .hero { background-attachment: scroll; } /* Melhor performance mobile */
+            section { padding: 60px 5%; }
         }
     </style>
 </head>
@@ -290,44 +168,49 @@
 
     <header>
         <div class="logo-text">Legião do Caos</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
         <nav>
-            <a href="#membros">ELITE</a>
-            <a href="#galeria">FROTA</a>
+            <ul id="nav-list">
+                <li><a href="#membros">ELITE</a></li>
+                <li><a href="#galeria">FROTA</a></li>
+            </ul>
         </nav>
     </header>
 
     <main>
         <section class="hero">
-            <img src="logo.png" alt="Legião do Caos Logo" data-aos="zoom-in" data-aos-duration="1000">
-            <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">CAOS E ORDEM</h1>
-            <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">A força bruta que comanda o MadOut2.</p>
-            <a href="https://chat.whatsapp.com/HTb44FoVyyHK9xNKUTb3w1" target="_blank" class="btn-join" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+            <img src="logo.png" alt="Logo" data-aos="zoom-in">
+            <h1 data-aos="fade-up" data-aos-delay="200">CAOS E ORDEM</h1>
+            <p data-aos="fade-up" data-aos-delay="400">A força bruta que comanda o MadOut2.</p>
+            <a href="https://chat.whatsapp.com/HTb44FoVyyHK9xNKUTb3w1" target="_blank" class="btn-join" data-aos="fade-up" data-aos-delay="600">
                 <i class="fab fa-whatsapp"></i> FECHAR COM A GANGUE
             </a>
         </section>
 
         <section id="membros">
-            <div class="section-title-container" data-aos="fade-left">
+            <div class="section-title" data-aos="fade-right">
                 <h2>Hierarquia de Elite</h2>
                 <div class="underline"></div>
             </div>
             <div class="members-grid">
-                <div class="member-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="member-card" data-aos="fade-up">
                     <i class="fas fa-crown"></i>
                     <div class="rank">Fundador / Admin</div>
                     <h3>Caua Madout2</h3>
                 </div>
-                <div class="member-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="member-card" data-aos="fade-up" data-aos-delay="100">
                     <i class="fas fa-skull"></i>
                     <div class="rank">Capitão de Guerra</div>
                     <h3>Reginaldo Brandão</h3>
                 </div>
-                <div class="member-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="member-card" data-aos="fade-up" data-aos-delay="200">
                     <i class="fas fa-user-shield"></i>
                     <div class="rank">Conselheiro</div>
                     <h3>Daniel Araujox</h3>
                 </div>
-                <div class="member-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="member-card" data-aos="fade-up" data-aos-delay="300">
                     <i class="fas fa-crosshairs"></i>
                     <div class="rank">Operacional</div>
                     <h3>[ 01 ]</h3>
@@ -335,48 +218,45 @@
             </div>
         </section>
 
-        <section id="galeria" style="background: #030303;">
-            <div class="section-title-container" data-aos="fade-right">
+        <section id="galeria" style="background: #020202;">
+            <div class="section-title" data-aos="fade-left">
                 <h2>Nossa Frota</h2>
                 <div class="underline"></div>
             </div>
             <div class="gallery">
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070" alt="Carro 1"></div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1964" alt="Carro 2"></div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=2070" alt="Carro 3"></div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400"><img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?q=80&w=2069" alt="Carro 4"></div>
+                <div class="gallery-item" data-aos="zoom-in"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600" alt="C1"></div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=600" alt="C2"></div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=600" alt="C3"></div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9?q=80&w=600" alt="C4"></div>
             </div>
         </section>
     </main>
 
-    <footer data-aos="fade-up" data-aos-offset="50">
+    <footer>
         <p style="font-weight: 900; letter-spacing: 2px;">LEGIÃO DO CAOS RP</p>
-        <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">MadOut2 Organização © 2026</p>
+        <p style="font-size: 0.75rem; color: #444; margin-top: 10px;">MADOUT2 ORG © 2026</p>
         <div class="social-icons">
             <a href="https://chat.whatsapp.com/HTb44FoVyyHK9xNKUTb3w1" target="_blank"><i class="fab fa-whatsapp"></i></a>
             <a href="#"><i class="fab fa-discord"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inicializar AOS
-        AOS.init({
-            offset: 120, // Distância do scroll antes de iniciar
-            duration: 800, // Duração da animação
-            easing: 'ease-out-back', // Efeito de suavidade
-            delay: 100, // Atraso inicial
-            once: true, // Animará apenas uma vez (ao rolar para baixo)
+        AOS.init({ duration: 1000, once: true });
+
+        // Lógica do Menu Mobile
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
         });
 
-        // Smooth scroll para links da navegação
-        document.querySelectorAll('header nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
             });
         });
     </script>
