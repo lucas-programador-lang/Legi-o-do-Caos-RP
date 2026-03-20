@@ -25,12 +25,12 @@
             line-height: 1.6;
         }
 
-        /* Scrollbar Personalizada */
+        /* Scrollbar */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #000; }
         ::-webkit-scrollbar-thumb { background: var(--primary-red); border-radius: 10px; }
 
-        /* Header Responsivo */
+        /* Header */
         header {
             padding: 15px 5%;
             display: flex;
@@ -62,7 +62,7 @@
 
         .menu-toggle { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -105,7 +105,7 @@
             text-transform: uppercase;
         }
 
-        /* Membros */
+        /* Seções */
         section { padding: 80px 5%; }
         .section-title { text-align: center; margin-bottom: 40px; }
         h2 { font-size: clamp(1.5rem, 5vw, 2.5rem); text-transform: uppercase; color: var(--primary-red); font-weight: 900; }
@@ -121,10 +121,10 @@
             border: 1px solid var(--accent-gray); border-radius: 8px;
         }
 
-        /* Galeria Responsiva */
+        /* Galeria 20 Fotos */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 15px;
         }
         .gallery-item { 
@@ -137,15 +137,15 @@
         .gallery-item img { 
             width: 100%; height: 100%; 
             object-fit: cover; 
-            opacity: 0.7; 
+            opacity: 0.8; 
             transition: 0.5s ease;
-            filter: grayscale(80%);
+            filter: grayscale(50%);
         }
-        .gallery-item:hover img { opacity: 1; transform: scale(1.1); filter: grayscale(0%); }
+        .gallery-item:hover img { opacity: 1; transform: scale(1.08); filter: grayscale(0%); }
 
         footer { padding: 40px 20px; text-align: center; background: #000; border-top: 1px solid var(--accent-gray); }
 
-        /* Media Queries para Celular */
+        /* Mobile */
         @media (max-width: 768px) {
             .menu-toggle { display: block; }
             nav ul {
@@ -154,7 +154,7 @@
                 padding: 20px; border-bottom: 2px solid var(--primary-red);
             }
             nav ul.active { display: flex; }
-            .gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+            .gallery { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
             section { padding: 50px 5%; }
         }
     </style>
@@ -188,15 +188,27 @@
                 <div class="underline"></div>
             </div>
             <div class="members-grid">
-                <div class="member-card" data-aos="fade-up"><i class="fas fa-crown"></i><div style="color:red; font-size:12px">LÍDER</div><h3>Caua Madout2</h3></div>
-                <div class="member-card" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-skull"></i><div style="color:red; font-size:12px">CAPITÃO</div><h3>Reginaldo Brandão</h3></div>
-                <div class="member-card" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-user-shield"></i><div style="color:red; font-size:12px">CONSELHEIRO</div><h3>Daniel Araujox</h3></div>
+                <div class="member-card" data-aos="fade-up">
+                    <i class="fas fa-crown"></i>
+                    <div style="color:red; font-size:12px; font-weight:bold">LÍDER</div>
+                    <h3>Caua Madout2</h3>
+                </div>
+                <div class="member-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-skull"></i>
+                    <div style="color:red; font-size:12px; font-weight:bold">CAPITÃO</div>
+                    <h3>Reginaldo Brandão</h3>
+                </div>
+                <div class="member-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-user-shield"></i>
+                    <div style="color:red; font-size:12px; font-weight:bold">CONSELHEIRO</div>
+                    <h3>Daniel Araujox</h3>
+                </div>
             </div>
         </section>
 
         <section id="galeria" style="background: #020202;">
             <div class="section-title" data-aos="fade-up">
-                <h2>Nossa Frota</h2>
+                <h2>Nossa Frota (20 Fotos)</h2>
                 <div class="underline"></div>
             </div>
             <div class="gallery" id="image-gallery">
@@ -205,10 +217,10 @@
     </main>
 
     <footer>
-        <p>LEGIÃO DO CAOS RP</p>
+        <p style="font-weight:900">LEGIÃO DO CAOS RP</p>
         <div class="social-icons" style="margin-top:15px">
-            <a href="https://chat.whatsapp.com/HTb44FoVyyHK9xNKUTb3w1" style="color:white; margin:0 10px"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" style="color:white; margin:0 10px"><i class="fab fa-discord"></i></a>
+            <a href="https://chat.whatsapp.com/HTb44FoVyyHK9xNKUTb3w1" target="_blank" style="color:white; margin:0 10px; font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" style="color:white; margin:0 10px; font-size: 1.5rem;"><i class="fab fa-discord"></i></a>
         </div>
     </footer>
 
@@ -216,13 +228,15 @@
     <script>
         AOS.init({ duration: 800, once: true });
 
-        // Lista com os nomes REAIS dos arquivos no seu GitHub
+        // LISTA DAS 20 FOTOS - Certifique-se que os nomes estão idênticos no GitHub
         const fotos = [
             'image_b6818d.jpg', 'image_b684d2.jpg', 'image_b6e347.jpg', 
             'image_b6e66b.png', 'image_b6e762.png', 'image_b753a4.jpg',
             'image_b753c4.jpg', 'image_b753e0.jpg', 'image_b753fe.jpg',
             'image_b7541b.jpg', 'image_b75424.jpg', 'image_b756e4.jpg',
-            'image_b756ea.jpg', 'image_b75706.jpg', 'image_b75724.jpg'
+            'image_b756ea.jpg', 'image_b75706.jpg', 'image_b75724.jpg',
+            // Adicione os nomes das 5 fotos restantes aqui:
+            'foto16.jpg', 'foto17.jpg', 'foto18.jpg', 'foto19.jpg', 'foto20.jpg'
         ];
 
         const galleryContainer = document.getElementById('image-gallery');
@@ -231,7 +245,14 @@
             const div = document.createElement('div');
             div.className = 'gallery-item';
             div.setAttribute('data-aos', 'zoom-in');
-            div.innerHTML = `<img src="${nomeArquivo}" alt="Carro Legião" loading="lazy">`;
+            
+            // O onerror coloca uma imagem cinza caso o nome do arquivo esteja errado no GitHub
+            div.innerHTML = `
+                <img src="${nomeArquivo}" 
+                     alt="Veículo Legião" 
+                     loading="lazy" 
+                     onerror="this.src='https://via.placeholder.com/400x225/111/333?text=Erro:+Nome+do+Arquivo'">`;
+            
             galleryContainer.appendChild(div);
         });
 
