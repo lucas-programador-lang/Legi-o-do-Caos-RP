@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Legião do Caos RP | MadOut2</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -16,239 +16,130 @@
             --transition-fast: 0.3s ease;
         }
 
-        /* Reset e Base */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
         
         body { 
             background-color: var(--dark-bg); 
             color: var(--text-light); 
             overflow-x: hidden;
-            font-size: 16px;
+            line-height: 1.5;
         }
 
-        /* Scrollbar Profissional */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: var(--primary-red); border-radius: 10px; }
-
-        /* Header Animado */
+        /* Header Responsivo */
         header {
-            padding: 15px 5%;
+            padding: 10px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             border-bottom: 2px solid var(--primary-red);
             position: fixed;
             width: 100%;
             top: 0; z-index: 1000;
             backdrop-filter: blur(10px);
-            transition: background var(--transition-fast);
         }
 
         .logo-text { 
             font-weight: 900; 
             color: var(--primary-red); 
             text-transform: uppercase; 
-            letter-spacing: 3px; 
+            letter-spacing: 2px; 
             font-style: italic;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+            font-size: 1.1rem;
         }
 
         header nav a {
             color: white; 
             text-decoration: none; 
             font-weight: 700; 
-            font-size: 0.8rem;
-            margin-left: 25px;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            transition: var(--transition-fast);
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            transition: 0.3s;
         }
 
-        header nav a::after {
-            content: '';
-            position: absolute;
-            width: 0; height: 2px;
-            bottom: -5px; left: 0;
-            background-color: var(--primary-red);
-            transition: var(--transition-fast);
-        }
+        header nav a:hover { border-color: var(--primary-red); color: var(--primary-red); }
 
-        header nav a:hover::after { width: 100%; }
-        header nav a:hover { color: var(--primary-red); }
-
-        /* Hero Section com Paralaxe e Animação de Brilho */
+        /* Hero Ajustado para Mobile */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            /* Novo Fundo Urbano e Escuro */
-            background: linear-gradient(0deg, var(--dark-bg) 5%, rgba(0,0,0,0.5) 100%), 
-                        url('https://images.unsplash.com/photo-1514473776127-61e2dc1dded3?q=80') center/cover;
-            background-attachment: fixed; /* Efeito Paralaxe */
-            padding: 20px;
-            position: relative;
+            background: linear-gradient(0deg, var(--dark-bg) 10%, rgba(0,0,0,0.5) 100%), 
+                        url('https://images.unsplash.com/photo-1514473776127-61e2dc1dded3?q=80') center/cover no-repeat;
+            padding: 80px 20px 40px 20px;
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(255,0,0,0.05) 0%, transparent 80%);
-            z-index: 1;
-        }
-
-        .hero * { z-index: 2; position: relative; }
 
         .hero img {
-            width: 250px; 
-            height: 250px;
+            width: clamp(160px, 50vw, 240px);
+            height: auto;
             border-radius: 50%;
-            border: 5px solid var(--primary-red);
-            box-shadow: 0 0 50px rgba(255, 0, 0, 0.4);
-            margin-bottom: 30px;
-            object-fit: cover;
-            animation: pulse 2s infinite, float 3s infinite ease-in-out;
+            border: 4px solid var(--primary-red);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 0, 0, 0.3); }
-            50% { transform: scale(1.03); box-shadow: 0 0 70px rgba(255, 0, 0, 0.7); }
-            100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 0, 0, 0.3); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .hero h1 { 
-            font-size: clamp(2.5rem, 8vw, 5rem); 
-            text-transform: uppercase; 
-            font-weight: 900;
-            line-height: 1;
-            text-shadow: 0 0 10px rgba(0,0,0,0.8);
-            letter-spacing: -2px;
-            margin-bottom: 10px;
-            color: white;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #ccc;
-            margin-top: 10px;
-            letter-spacing: 1px;
-            font-weight: 700;
+            font-size: clamp(1.8rem, 10vw, 4rem); 
+            text-transform: uppercase; font-weight: 900;
+            color: white; line-height: 1.1;
         }
 
         .btn-join {
             background: var(--primary-red); 
             color: white; 
-            padding: 20px 50px;
-            border-radius: 5px; 
+            padding: 15px 30px;
+            border-radius: 4px; 
             text-decoration: none; 
             font-weight: 900;
-            font-size: 1.3rem; 
-            transition: var(--transition-fast); 
-            margin-top: 40px;
+            font-size: 1rem; 
+            margin-top: 30px;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
-            cursor: pointer;
-            border: 2px solid transparent;
+            width: fit-content;
         }
 
-        .btn-join:hover {
-            background: transparent;
-            color: var(--primary-red);
-            transform: scale(1.05);
-            border: 2px solid var(--primary-red);
-            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.7);
-        }
-
-        /* Seções e Animações no Scroll */
-        section { padding: 120px 10%; position: relative; }
-
-        .section-title-container { 
-            text-align: center; 
-            width: 100%; 
-            margin-bottom: 70px;
-            overflow: hidden;
-        }
-
-        h2 { 
-            text-align: center; 
-            font-size: clamp(2rem, 5vw, 3rem); 
-            margin-bottom: 15px; 
-            text-transform: uppercase; 
-            color: var(--primary-red); 
-            font-weight: 900;
-            letter-spacing: -1px;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
-            display: inline-block;
-            transition: var(--transition-slow);
-        }
-
-        .underline {
-            width: 60px;
-            height: 4px;
-            background-color: var(--primary-red);
-            margin: 0 auto;
-        }
-
-        /* Membros */
+        /* Grid de Membros Responsivo */
+        section { padding: 60px 5%; }
+        
         .members-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Melhora em telas pequenas */
+            gap: 15px;
         }
 
         .member-card {
             background: var(--card-bg);
-            padding: 40px 20px;
+            padding: 20px 10px;
             text-align: center;
             border: 1px solid var(--accent-gray);
-            transition: var(--transition-fast);
-            position: relative;
-            overflow: hidden;
+            border-radius: 8px;
         }
 
-        .member-card:hover {
-            border-color: var(--primary-red);
-            transform: translateY(-5px) scale(1.02);
-            background: #110000;
-        }
+        .member-card i { font-size: 1.8rem; color: var(--primary-red); margin-bottom: 10px; }
+        .rank { font-size: 0.65rem; color: var(--primary-red); font-weight: bold; margin-bottom: 5px; }
+        .member-card h3 { font-size: 1rem; color: white; }
 
-        .member-card i { font-size: 2.5rem; color: var(--primary-red); margin-bottom: 15px; }
-        .rank { font-size: 0.75rem; color: var(--primary-red); font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
-        .member-card h3 { font-size: 1.4rem; letter-spacing: 1px; color: white; }
+        footer { padding: 40px 20px; text-align: center; background: #000; border-top: 1px solid var(--accent-gray); }
 
-        /* Footer */
-        footer { 
-            padding: 80px 20px; 
-            text-align: center; 
-            background: #000; 
-            border-top: 1px solid var(--accent-gray);
-        }
-
-        .social-icons { margin-top: 25px; display: flex; justify-content: center; gap: 20px; }
-        .social-icons a { color: #888; font-size: 1.5rem; transition: var(--transition-fast); }
-        .social-icons a:hover { color: var(--primary-red); transform: scale(1.1); }
-
-        /* Media Queries */
-        @media (max-width: 768px) {
-            section { padding: 80px 5%; }
-            .hero h1 { font-size: 3rem; }
-            header { padding: 15px 5%; }
-            header nav a { font-size: 0.7rem; margin-left: 15px; }
-            .hero img { width: 200px; height: 200px; }
+        /* AJUSTES FINAIS MOBILE */
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .members-grid { grid-template-columns: 1fr 1fr; } /* Dois por linha no celular */
+            .logo-text { letter-spacing: 1px; }
         }
     </style>
 </head>
@@ -258,82 +149,60 @@
         <div class="logo-text">Legião do Caos</div>
         <nav>
             <a href="#membros">ELITE</a>
-            </nav>
+        </nav>
     </header>
 
     <main>
         <section class="hero">
-            <img src="logo.png" alt="Legião do Caos Logo" data-aos="zoom-in" data-aos-duration="1000">
-            <h1 data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">CAOS E ORDEM</h1>
-            <p data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">A força bruta que comanda o MadOut2.</p>
-            <a href="https://chat.whatsapp.com/HTb44FoVyyHK9xNKUTb3w1" target="_blank" class="btn-join" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                <i class="fab fa-whatsapp"></i> FECHAR COM A GANGUE
+            <img src="logo.png" alt="Logo" data-aos="zoom-in" onerror="this.src='https://via.placeholder.com/200/ff0000/ffffff?text=LOGO'">
+            <h1 data-aos="fade-up">CAOS E ORDEM</h1>
+            <p data-aos="fade-up" data-aos-delay="200">A força bruta que comanda o MadOut2.</p>
+            <a href="https://chat.whatsapp.com/HTb44FoVyyHK9xNKUTb3w1" target="_blank" class="btn-join">
+                <i class="fab fa-whatsapp"></i> GANGUE
             </a>
         </section>
 
         <section id="membros">
-            <div class="section-title-container" data-aos="fade-left">
-                <h2>Hierarquia de Elite</h2>
-                <div class="underline"></div>
+            <div style="text-align:center; margin-bottom: 40px;">
+                <h2 style="color:var(--primary-red); text-transform:uppercase; font-weight:900;">Hierarquia</h2>
+                <div style="width:50px; height:3px; background:var(--primary-red); margin:10px auto;"></div>
             </div>
             <div class="members-grid">
-                <div class="member-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="member-card" data-aos="fade-up">
                     <i class="fas fa-crown"></i>
-                    <div class="rank">Fundador / Admin</div>
-                    <h3>Caua Madout2</h3>
+                    <div class="rank">Fundador</div>
+                    <h3>Caua</h3>
+                </div>
+                <div class="member-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-skull"></i>
+                    <div class="rank">Capitão</div>
+                    <h3>Reginaldo</h3>
                 </div>
                 <div class="member-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-skull"></i>
-                    <div class="rank">Capitão de Guerra</div>
-                    <h3>Reginaldo Brandão</h3>
-                </div>
-                <div class="member-card" data-aos="fade-up" data-aos-delay="300">
                     <i class="fas fa-user-shield"></i>
                     <div class="rank">Conselheiro</div>
-                    <h3>Daniel Araujox</h3>
+                    <h3>Daniel</h3>
                 </div>
-                <div class="member-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="member-card" data-aos="fade-up" data-aos-delay="300">
                     <i class="fas fa-crosshairs"></i>
                     <div class="rank">Operacional</div>
                     <h3>[ 01 ]</h3>
                 </div>
             </div>
         </section>
+    </main>
 
-        </main>
-
-    <footer data-aos="fade-up" data-aos-offset="50">
-        <p style="font-weight: 900; letter-spacing: 2px;">LEGIÃO DO CAOS RP</p>
-        <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">MadOut2 Organização © 2026</p>
-        <div class="social-icons">
-            <a href="https://chat.whatsapp.com/HTb44FoVyyHK9xNKUTb3w1" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="#"><i class="fab fa-discord"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
+    <footer>
+        <p style="font-weight: 900; font-size: 0.9rem;">LEGIÃO DO CAOS RP</p>
+        <div style="margin-top:15px; display:flex; justify-content:center; gap:20px;">
+            <a href="https://chat.whatsapp.com/HTb44FoVyyHK9xNKUTb3w1" style="color:white;"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" style="color:white;"><i class="fab fa-discord"></i></a>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inicializar AOS
-        AOS.init({
-            offset: 120, // Distância do scroll antes de iniciar
-            duration: 800, // Duração da animação
-            easing: 'ease-out-back', // Efeito de suavidade
-            delay: 100, // Atraso inicial
-            once: true, // Animará apenas uma vez (ao rolar para baixo)
-        });
-
-        // Lógica de Geração Automática de Galeria Removida
-
-        // Smooth scroll para links da navegação
-        document.querySelectorAll('header nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        AOS.init({ duration: 800, once: true });
     </script>
 </body>
 </html>
