@@ -170,7 +170,7 @@
             #cursor, #cursor-follower { display: none; }
             .section-padding { padding: 80px 5%; }
             header { padding: 20px 5%; }
-            nav { display: none; } /* Mobile menu can be added later if needed */
+            nav { display: none; }
             .hero h1 { font-size: 2.5rem; }
         }
     </style>
@@ -232,16 +232,27 @@
             </div>
             <div class="garage-grid">
                 <div class="garage-card" data-aos="flip-left">
-                    <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7fd761?q=80" alt="Car 1">
-                    <div class="garage-info"><span>UNIDADE 01</span><h4>Interceptador Black</h4></div>
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80" alt="Interceptador Black" onerror="this.src='https://via.placeholder.com/600x400/111/ff0000?text=UNIT+01+OFFLINE'">
+                    <div class="garage-info">
+                        <span>UNIDADE 01</span>
+                        <h4>Interceptador Black</h4>
+                    </div>
                 </div>
+
                 <div class="garage-card" data-aos="flip-left" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80" alt="Car 2">
-                    <div class="garage-info"><span>UNIDADE 02</span><h4>Brawler Blindado</h4></div>
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80" alt="Brawler Blindado" onerror="this.src='https://via.placeholder.com/600x400/111/ff0000?text=UNIT+02+OFFLINE'">
+                    <div class="garage-info">
+                        <span>UNIDADE 02</span>
+                        <h4>Brawler Blindado</h4>
+                    </div>
                 </div>
+
                 <div class="garage-card" data-aos="flip-left" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80" alt="Car 3">
-                    <div class="garage-info"><span>UNIDADE 03</span><h4>Recon Scouter</h4></div>
+                    <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80" alt="Recon Scouter" onerror="this.src='https://via.placeholder.com/600x400/111/ff0000?text=UNIT+03+OFFLINE'">
+                    <div class="garage-info">
+                        <span>UNIDADE 03</span>
+                        <h4>Recon Scouter</h4>
+                    </div>
                 </div>
             </div>
         </section>
@@ -301,7 +312,6 @@
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        // Cursor Duplo Profissional
         const cursor = document.getElementById('cursor');
         const follower = document.getElementById('cursor-follower');
         
@@ -310,7 +320,6 @@
             follower.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
         });
 
-        // Contadores Dinâmicos
         const counters = document.querySelectorAll('.stat-number');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -334,7 +343,6 @@
 
         counters.forEach(c => observer.observe(c));
 
-        // Áudio Engine
         const audio = document.getElementById('bgMusic');
         const audioToggle = document.getElementById('audioToggle');
         const statusText = document.getElementById('audioStatus');
